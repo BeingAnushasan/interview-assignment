@@ -6,6 +6,7 @@ import com.anushasan.interviewassignment.model.PersonGeneralInformation;
 import com.opencsv.CSVReader;
 import com.opencsv.bean.CsvToBean;
 import com.opencsv.bean.HeaderColumnNameTranslateMappingStrategy;
+import org.springframework.stereotype.Component;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -15,6 +16,7 @@ import java.util.Map;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
+@Component
 public class CSVParser {
 
     public List<Person> parse(){
@@ -44,7 +46,7 @@ public class CSVParser {
         mapping.put("Response", "response");
         mapping.put("Note", "note");
         mapping.put("Collateral", "collateral");
-        mapping.put("Qualified/Disqualified", "qualifiedDisqualified");
+        mapping.put("Qualified/Disqualified", "status");
         mapping.put("ScannedBy", "scannedBy");
 
         // HeaderColumnNameTranslateMappingStrategy

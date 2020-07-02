@@ -41,6 +41,6 @@ public class Person {
     private String response;
     private String note;
     private String collateral;
-    private String qualifiedDisqualified;
+    private String status;
     private String scannedBy;
 }

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Interview Assignment</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+<div class="container">
+    <h1>People </h1>
+    <div class=" table-responsive">
+        <table id="customerTable" class="table">
+            <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Middle Initial</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>Email2</th>
+                <th>Company Name</th>
+                <th>Job Title</th>
+                <th>Address1</th>
+                <th>Address2</th>
+                <th>Address3</th>
+                <th>City</th>
+                <th>StateId</th>
+                <th>Zip</th>
+                <th>CountryId</th>
+                <th>Phone Number</th>
+                <th>Phone Number2</th>
+                <th>Fax Number</th>
+                <th>Event Name</th>
+                <th>Scanned Date</th>
+                <th>Scanned Time</th>
+                <th>Question</th>
+                <th>Response</th>
+                <th>Note</th>
+                <th>Collateral</th>
+                <th>Status</th>
+                <th>ScannedBy</th>
+
+
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="person, rowStat: ${persons}"
+                th:style="${rowStat.odd} ? 'color: gray' : 'color: blue;'">
+                <td th:text="${person.firstName}">Jack</td>
+                <td th:text="${person.middleInitial}">23</td>
+                <td th:text="${person.lastName}">AVE N</td>
+                <td th:text="${person.email}">Jack</td>
+                <td th:text="${person.email2}">23</td>
+                <td th:text="${person.companyName}">AVE N</td>
+                <td th:text="${person.jobTitle}">Jack</td>
+                <td th:text="${person.address1}">23</td>
+                <td th:text="${person.address2}">AVE N</td>
+                <td th:text="${person.address3}">Jack</td>
+                <td th:text="${person.city}">23</td>
+                <td th:text="${person.stateId}">AVE N</td>
+                <td th:text="${person.zip}">Jack</td>
+                <td th:text="${person.countryId}">23</td>
+                <td th:text="${person.phoneNumber}">AVE N</td>
+                <td th:text="${person.phone2Number}">Jack</td>
+                <td th:text="${person.faxNumber}">23</td>
+                <td th:text="${person.eventName}">Jack</td>
+                <td th:text="${person.scannedDate}">23</td>
+                <td th:text="${person.scannedTime}">AVE N</td>
+                <td th:text="${person.question}">AVE N</td>
+                <td th:text="${person.response}">Jack</td>
+                <td th:text="${person.note}">23</td>
+                <td th:text="${person.collateral}">AVE N</td>
+                <td th:text="${person.status}">Jack</td>
+                <td th:text="${person.scannedBy}">23</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>
