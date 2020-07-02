@@ -8,9 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 
 
 import java.util.List;
@@ -33,7 +31,7 @@ public class IndexController {
                 .addAttribute( "msg", "All Candidates" )
                 .addAttribute( "list", listOfScanners );
         ;
-        return "List";
+        return "Index";
     }
 
     @GetMapping("/fromUS")
@@ -43,7 +41,7 @@ public class IndexController {
         model.addAttribute( "persons", fromUS )
                 .addAttribute( "msg", "Candidates from US" )
                 .addAttribute( "list", listOfScanners );
-        return "List";
+        return "Index";
     }
 
     @GetMapping("/qualified")
@@ -54,7 +52,7 @@ public class IndexController {
                 .addAttribute( "msg", "Qualified Candidates" )
                 .addAttribute( "list", listOfScanners );
         ;
-        return "List";
+        return "Index";
     }
 
     @GetMapping("/disqualified")
@@ -65,32 +63,19 @@ public class IndexController {
                 .addAttribute( "msg", "Disqualified Candidates" )
                 .addAttribute( "list", listOfScanners );
         ;
-        return "List";
+        return "Index";
     }
 
 
     @GetMapping("/scannedby/{name}")
     public String scannedBy( @PathVariable("name") String name, Model model ){
-        System.out.println( "name in direct invoke:" + name );
+        System.out.println( "name in controller invoke:" + name );
         List<Person> listByScannerName = personService.getListByScannerName( name );
         List<ScannedBy> listOfScanners = personService.getScannedByList();
         model.addAttribute( "persons", listByScannerName )
+                .addAttribute( "msg","Candidates Scanned By "+name )
                 .addAttribute( "list", listOfScanners );;
-        return "List";
+        return "Index";
     }
 
-    @PostMapping("/scannedby")
-    public String scannedBy( @ModelAttribute("ScannedBy") ScannedBy scanner, Model model ){
-        System.out.println( scanner.getName() );
-        List<Person> scannedBy = personService.getListByScannerName( scanner.getName() );
-        model.addAttribute( "persons", scannedBy );
-        return "List";
-    }
-
-    @GetMapping("/scannedbyPage")
-    public String scannedBy( Model model ){
-        List<ScannedBy> scannedByList = personService.getScannedByList();
-        model.addAttribute( "list", scannedByList );
-        return "ScannedBy";
-    }
 }

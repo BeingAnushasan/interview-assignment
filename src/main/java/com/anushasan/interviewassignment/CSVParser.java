@@ -59,7 +59,7 @@ public class CSVParser {
         CSVReader csvReader = null;
         try {
             csvReader = new CSVReader(new FileReader
-                    ("/home/tiger/WorkSpace/IdeaProjects/interview-assignment/interview-assignment/persons.csv"));
+                    ("src/main/resources/persons.csv"));
         } catch (FileNotFoundException e) {
 
             // TODO Auto-generated catch block
@@ -96,10 +96,6 @@ public class CSVParser {
 
     public int calculateNoOfPeople(String name){
       return (int) parse().stream().filter( person -> person.getScannedBy().equals( name )).count();
-    }
-
-    public List<Person> peopleScannedBy( String name){
-        return  parse().stream().filter( person -> person.getScannedBy().equals( name )).collect( Collectors.toList());
     }
 
 }
