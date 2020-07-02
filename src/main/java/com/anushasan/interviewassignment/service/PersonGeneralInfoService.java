@@ -6,23 +6,21 @@ import com.anushasan.interviewassignment.model.PersonDetails;
 import com.anushasan.interviewassignment.model.PersonGeneralInformation;
 import com.anushasan.interviewassignment.repo.PersonGeneralInfoRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.stereotype.Service;
 
-import java.util.Iterator;
 import java.util.List;
 
 @Service
+
 public class PersonGeneralInfoService {
     @Autowired
     PersonGeneralInfoRepo personGeneralInfoRepo;
     @Autowired
     CSVParser csvParser;
 
-
     public void savecombined(){
         List<Person> list = csvParser.parse();
-//        for (Iterator<Person> it = list.iterator(); it.hasNext(); ) {
-        //general info
         for (Person person : list) {
 
             PersonGeneralInformation personGeneralInformation = new PersonGeneralInformation();

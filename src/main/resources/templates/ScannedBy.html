@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<label>Choose:</label>
+<form th:action="@{/scannedby}" method="post">
+    <div class="col-lg-3" th:object="${ScannedBy}">
+        <select class="form-control" id="testOrder" name="testOrder">
+            <option disabled>Select Person</option>
+            <option th:each="person : ${list}"
+                    th:value="${person}"
+                    th:text="${person.name}+' : '+${person.noOfPeople}"></option>
+        </select>
+    </div>
+
+    <button type="submit">Filter</button>
+</form>
+</body>
+</html>

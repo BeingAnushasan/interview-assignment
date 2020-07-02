@@ -2,7 +2,7 @@ package com.anushasan.interviewassignment;
 
 
 import com.anushasan.interviewassignment.model.Person;
-import com.anushasan.interviewassignment.model.PersonGeneralInformation;
+import com.anushasan.interviewassignment.model.ScannedBy;
 import com.opencsv.CSVReader;
 import com.opencsv.bean.CsvToBean;
 import com.opencsv.bean.HeaderColumnNameTranslateMappingStrategy;
@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -74,6 +75,31 @@ public class CSVParser {
         List<Person> filteredList = list.stream().filter(Predicate.not(information -> information.getFirstName().isEmpty())).collect(Collectors.toList());
         return  filteredList;
 
+    }
+
+
+
+    public List<ScannedBy> getList(){
+        List<ScannedBy> scannedByList = new ArrayList<>();
+        scannedByList.add( new ScannedBy( "Pam Fink", calculateNoOfPeople("Pam Fink") ) );
+        scannedByList.add( new ScannedBy( "Amanda Delong", calculateNoOfPeople( "Amanda Delong" ) ) );
+        scannedByList.add( new ScannedBy( "Roger Williams", calculateNoOfPeople( "Roger Williams" ) ) );
+        scannedByList.add( new ScannedBy( "James Finnegan", calculateNoOfPeople( "James Finnegan" ) ) );
+        scannedByList.add( new ScannedBy( "Laura Jordan", calculateNoOfPeople( "Laura Jordan" ) ) );
+        scannedByList.add( new ScannedBy( "Adrienne Doyle", calculateNoOfPeople( "Adrienne Doyle" ) ) );
+        scannedByList.add( new ScannedBy( "Chris Knepper", calculateNoOfPeople( "Chris Knepper" ) ) );
+        scannedByList.add( new ScannedBy( "Bjarne Aarup", calculateNoOfPeople( "Bjarne Aarup" ) ) );
+        scannedByList.add( new ScannedBy( "Kevin Block", calculateNoOfPeople( "Kevin Block" ) ) );
+
+        return  scannedByList;
+    }
+
+    public int calculateNoOfPeople(String name){
+      return (int) parse().stream().filter( person -> person.getScannedBy().equals( name )).count();
+    }
+
+    public List<Person> peopleScannedBy( String name){
+        return  parse().stream().filter( person -> person.getScannedBy().equals( name )).collect( Collectors.toList());
     }
 
 }

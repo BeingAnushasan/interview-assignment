@@ -17,11 +17,22 @@
         <a th:href="@{/}">All</a> /
         <a th:href="@{/fromUS}">US-Only</a> /
         <a th:href="@{/qualified}">Qualified</a> /
-        <a th:href="@{/disqualified}">Disqualified</a>
+        <a th:href="@{/disqualified}">Disqualified</a> /
+        <a th:href="@{/scannedby}">Scanned By</a>
+
         <a th:href="@{/h2-console}">H2-Console</a>
     </tr>
 
+    <div>
+        <tr th:each="scanner: ${list}">
+            <td>
+                <a th:href="@{'/scannedby/' + ${scanner.name}}" th:text="${scanner.name} + ${scanner.noOfPeople}"></a>
+            </td>
+        </tr>
+    </div>
+
     <div class=" table-responsive">
+
         <table id="personTable" class="table">
             <thead>
             <tr th:style=" 'color: blue;'">
@@ -91,7 +102,6 @@
             </tbody>
         </table>
     </div>
-
 
 
 </div>
