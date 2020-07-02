@@ -1,10 +1,9 @@
 package com.anushasan.interviewassignment.repo;
 
-import com.anushasan.interviewassignment.model.Person;
-import com.anushasan.interviewassignment.model.PersonGeneralInformation;
+import com.anushasan.interviewassignment.model.PersonDetails;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface PersonDetailsRepo  extends JpaRepository<Person, Integer> {
+public interface PersonDetailsRepo extends JpaRepository<PersonDetails, Integer> {
 }
