@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -57,14 +58,7 @@ public class CSVParser {
         strategy.setColumnMapping(mapping);
 
         CSVReader csvReader = null;
-        try {
-            csvReader = new CSVReader(new FileReader
-                    ("src/main/resources/persons.csv"));
-        } catch (FileNotFoundException e) {
-
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
+        csvReader = new CSVReader(new InputStreamReader(getClass().getResourceAsStream("/persons.csv")));
         CsvToBean csvToBean = new CsvToBean();
 
         // call the parse method of CsvToBean
